@@ -14,4 +14,4 @@ Route::get('/whoami', function () {
 });
 
 
-Route::get('/product', [ProductsController::class, 'index']);
+Route::get('/books', [BookController::class, 'index']);
