@@ -1,3 +1,4 @@
+Lab 3
 Q1. Explain the order you placed your featured route and your detail route in, and what would happen if you swapped them.
 -I put the featured route before the detail route because Laravel might think featured is an ID if the detail route comes first.
 
