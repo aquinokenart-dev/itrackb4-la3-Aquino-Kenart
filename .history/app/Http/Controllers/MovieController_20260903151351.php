@@ -11,19 +11,21 @@ class MovieController extends Controller
     {
         return view('movies.index', ['movies' => $this->movies()]);
     }
+
     public function show($id){
         $movies = $this->movies();
         if (!isset($movies[$id])) {
             abort(404);
         }
+
         return view('movies.show', ['movie' => $movies[$id]]);
     }
+
     public function filter($genre = null){
         $movies = $this->movies();
         if ($genre) {
-            
             $movies = array_filter($movies, function ($movie) use ($genre) {
-                return $movie['genre'] === $genre;
+                return strtolower($movie['genre']) === strtolower($genre);
             });
         }
 

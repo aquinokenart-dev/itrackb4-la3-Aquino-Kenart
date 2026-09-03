@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Movie List</title>
+    <title>Movie Filter</title>
 </head>
 <body>
-    <h1>My Movie List</h1>
-    <p>Prepared by: Kenart G. Aquino</p>
+    <h1>Movie List</h1>
+    <p>
+        Showing genre:
+        {{ $activeGenre ?? 'All' }}
+    </p>
     <table border="1" cellpadding="8">
         <tr>
             <th>Title</th>
@@ -13,12 +16,10 @@
             <th>Rating</th>
             <th>Year</th>
         </tr>
-        @foreach ($movies as $movie)
+        @forelse ($movies as $movie)
             <tr>
                 <td>
-                    <a href="{{ route('movies.show', $movie['id']) }}">
-                        {{ $movie['title'] }}
-                    </a>
+                    {{ $movie['title'] }}
                 </td>
                 <td>
                     {{ $movie['genre'] }}
@@ -30,10 +31,16 @@
                     {{ $movie['year'] }}
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="4">
+                    No movies found.
+                </td>
+            </tr>
+        @endforelse
     </table>
-    <br>
-    <br>
+    <a href="{{ route('movies.index') }}">
+        Back to Movie List
     </a>
 </body>
 </html>

@@ -18,16 +18,16 @@ class MovieController extends Controller
         }
         return view('movies.show', ['movie' => $movies[$id]]);
     }
-    public function filter($genre = null){
+    public function filter($year = null){
         $movies = $this->movies();
-        if ($genre) {
-            
-            $movies = array_filter($movies, function ($movie) use ($genre) {
-                return $movie['genre'] === $genre;
+        if ($year) {
+
+            $movies = array_filter($movies, function ($movie) use ($year) {
+                return $movie['genre'] === $year;
             });
         }
 
-        return view('movies.filter', ['movies' => $movies,'activeGenre' => $genre]);
+        return view('movies.filter', ['movies' => $movies,'activeGenre' => $year]);
     }
 
     private function movies()

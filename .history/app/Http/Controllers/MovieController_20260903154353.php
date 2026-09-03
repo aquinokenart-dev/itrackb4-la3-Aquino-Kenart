@@ -21,7 +21,6 @@ class MovieController extends Controller
     public function filter($genre = null){
         $movies = $this->movies();
         if ($genre) {
-            
             $movies = array_filter($movies, function ($movie) use ($genre) {
                 return $movie['genre'] === $genre;
             });

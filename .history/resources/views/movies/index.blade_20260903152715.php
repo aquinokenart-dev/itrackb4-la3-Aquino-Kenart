@@ -33,7 +33,12 @@
         @endforeach
     </table>
     <br>
+    <a href="{{ route('movies.featured') }}">
+        Featured Movie
+    </a>
     <br>
+    <a href="{{ route('movies.filter', 'Comedy') }}">
+        Comedy Movies
     </a>
 </body>
 </html>
